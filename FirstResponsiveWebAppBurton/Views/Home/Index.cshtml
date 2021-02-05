@@ -1,0 +1,73 @@
+﻿@model AgeCalculatorModel
+
+@{
+    ViewData["Title"] = "Age Calculator";
+}
+
+
+<div class="container">
+    <main>
+        <div class="alert alert-success alert-dismissible">
+            <button class="close" data-dismiss="alert">&times;</button>
+            Welcome to the age calculator. Enter your name and DOB details to calculate your age
+        </div>
+
+        <form asp-action="Index" method="post" class="form-horizontal">
+            <div class="row">
+                <label asp-for="Name"
+                       class="control-label col-3">
+                    Your Name:
+                </label>
+                <input asp-for="Name"
+                       class="form-control col-6" />
+                <span asp-validation-for="@Model.Name"
+                      class="text-danger col"></span>
+            </div>
+            <div class="row">
+                <label asp-for="Day"
+                       class="control-label col-3">
+                    Day you were born on: eg 14
+                </label>
+                <input asp-for="Day"
+                       class="form-control col-6" />
+                <span asp-validation-for="@Model.Day"
+                      class="text-danger col"></span>
+            </div>
+            <div class="row">
+                <label asp-for="Month"
+                       class="control-label col-3">
+                    The month you were born in: eg 4
+                </label>
+                <input asp-for="Month"
+                       class="form-control col-6" />
+                <span asp-validation-for="@Model.Month"
+                      class="text-danger col"></span>
+            </div>
+            <div class="row">
+                <label asp-for="Year"
+                       class="control-label col-3">
+                    The year you were born in: eg 1993
+                </label>
+                <input asp-for="Year"
+                       class="form-control col-6" />
+                <span asp-validation-for="@Model.Year"
+                      class="text-danger col"></span>
+            </div>
+            <div class="row">
+                <label class="control-label col-3">Your Age (as of today):</label>
+                <input value="@ViewBag.Age" readonly
+                       class="form-control col-6" />
+            </div>
+            <div class="row">
+                <div class="col offset-3 pl-0">
+                    <button type="submit"
+                            class="btn btn-primary">
+                        Calculate
+                    </button>
+                    <a asp-action="Index"
+                       class="btn btn-secondary">Clear</a>
+                </div>
+            </div>
+        </form>
+    </main>
+</div>
